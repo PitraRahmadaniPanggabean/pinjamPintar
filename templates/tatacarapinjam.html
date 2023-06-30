@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .diagram-wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+        justify-items: center;
+        align-items: center;
+      }
+
+      .diagram-step {
+        text-align: center;
+      }
+
+      .step-icon {
+        font-size: 40px;
+        color: #227783;
+        margin-bottom: 10px;
+      }
+
+      .step-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .step-text {
+        font-size: 16px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Content Wrapper. Contains page content -->
+    {% include 'header_warga.html' %}
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark"><b>Tata Cara Peminjaman</b></h1>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="diagram-wrapper">
+                    <div class="diagram-step">
+                      <i class="fas fa-user-check step-icon"></i>
+                      <div class="step-number">1</div>
+                      <div class="step-text">Pilih login jika Anda sudah memiliki akun.</div>
+                    </div>
+                    <div class="diagram-step">
+                      <i class="fas fa-user-plus step-icon"></i>
+                      <div class="step-number">2</div>
+                      <div class="step-text">Bagi yang belum memiliki akun, silakan memilih register untuk mendaftarkan akunnya.</div>
+                    </div>
+                    <div class="diagram-step">
+                      <i class="fas fa-list-alt step-icon"></i>
+                      <div class="step-number">3</div>
+                      <div class="step-text">Pilih menu daftar aset untuk melihat ketersediaan aset.</div>
+                    </div>
+                    <div class="diagram-step">
+                      <i class="fas fa-file-alt step-icon"></i>
+                      <div class="step-number">4</div>
+                      <div class="step-text">Pilih menu transaksi pinjam dan klik form peminjaman.</div>
+                    </div>
+                    <div class="diagram-step">
+                      <i class="fas fa-edit step-icon"></i>
+                      <div class="step-number">5</div>
+                      <div class="step-text">Isi form peminjaman dengan lengkap dan sesuai, kemudian submit.</div>
+                    </div>
+                    <div class="diagram-step">
+                      <i class="fas fa-clock step-icon"></i>
+                      <div class="step-number">6</div>
+                      <div class="step-text">Tunggu konfirmasi peminjaman. Aset dapat diambil sesuai dengan tanggal peminjaman.</div>
+                    </div>
+                    <div class="diagram-step">
+                      <i class="fas fa-undo-alt step-icon"></i>
+                      <div class="step-number">7</div>
+                      <div class="step-text">Setelah selesai meminjam, klik form pengembalian dan isi dengan lengkap dan sesuai.</div>
+                    </div>
+                    <div class="diagram-step">
+                      <i class="fas fa-undo step-icon"></i>
+                      <div class="step-number">8</div>
+                      <div class="step-text">Kembalikan aset pada tempat peminjaman awal.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% include 'footer_warga.html' %}
+  </body>
+</html>

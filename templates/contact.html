@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 60px;
+        text-align: left;
+        width: 700px;
+      }
+
+      .card h1 {
+        color: #227783;
+        font-size: 40px;
+        margin-bottom: 40px;
+      }
+
+      .card p {
+        color: #000000;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .contact-info i {
+        font-size: 24px;
+        color: #227783;
+        margin-right: 10px;
+      }
+
+      .contact-info p {
+        margin: 0;
+        color: #141414;
+        font-weight: bold;
+      }
+
+      .contact-icons {
+        display: flex;
+        justify-content: left;
+        margin-top: 20px;
+      }
+
+      .contact-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+        color: #fff;
+        border-radius: 50%;
+        background-color: #227783;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-icons a:hover {
+        background-color: #135151;
+      }
+
+      .contact-icons i {
+        font-size: 20px;
+      }
+
+      .contact-buttons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .contact-buttons a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #fff;
+        background-color: #227783;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-buttons a:hover {
+        background-color: #135151;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'header_warga.html'%}
+    <section class="content col-md-15">
+      <div class="container">
+        <div class="card col-md-15">
+          <h1><b>Contact Us</b></h1>
+          <div class="contact-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Perumahan BRR, Kampung Pulo Sarok, Dusun Rahmat, Kecamatan Singkil, Kabupaten Aceh Singkil.</p>
+          </div>
+
+          <div class="contact-info">
+            <i class="fas fa-phone-alt"></i>
+            <p>
+              <span>Hani: </span>087848347917<br />
+              <span>Pitra: </span>082362010219<br />
+              <span>Iqlimah: </span>085875251365<br />
+              <span>Husein: </span>082264810021
+            </p>
+          </div>
+
+          <div class="contact-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+
+          <div class="contact-buttons">
+            <a href="#" class="cta-button">Hubungi Kami</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% include 'footer_warga.html' %}
+  </body>
+</html>

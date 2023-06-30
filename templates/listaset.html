@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Aset</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    #form-aset {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    #form-aset .form-group {
+      margin-bottom: 10px;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  {% include 'header_admin.html' %}
+
+  <div class="content-wrapper">
+    <div id="form-aset" style="display: none;">
+      <form id="formTambahAset" action="{{ url_for('tambah_data_aset') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="nama">Nama Aset</label>
+          <input type="text" class="form-control" id="nama" name="nama" required>
+        </div>
+        <div class="form-group">
+          <label for="gambar">Gambar Aset</label>
+          <input type="file" class="form-control-file" id="gambar" name="gambar">
+        </div>
+        <div class="form-group">
+          <label for="kategori">Kategori</label>
+          <select class="form-control" id="kategori" name="kategori" required>
+            <option value="">Pilih Kategori</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Elektronik">Elektronik</option>
+            <!-- Tambahkan opsi kategori lainnya sesuai kebutuhan -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="jumlah">Jumlah</label>
+          <input type="number" class="form-control" id="jumlah" name="jumlah" required>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <input type="text" class="form-control" id="status" name="status" required>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-primary" type="submit">Simpan</button>
+          <button class="btn btn-secondary" onclick="batal()">Batal</button>
+        </div>  
+      </form>
+    </div>
+
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Data Aset</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Daftar Aset</h3>
+              </div>
+              <div class="card-body">
+                <table id="asetTable" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama Aset</th>
+                      <th>Gambar Aset</th>
+                      <th>Kategori</th>
+                      <th>Jumlah</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in asets %}
+                    <tr>
+                      <td>{{ loop.index }}</td>
+                      <td>{{ item.nama }}</td>
+                      <td>
+                        <div class="image-container">
+                          <img src="{{ url_for('static', filename='gambar/' + item.gambar) }}" alt="Gambar Aset" width="400" height="150">
+                        </div>
+                      </td>
+                      <td>{{ item.kategori }}</td>
+                      <td>{{ item.jumlah }}</td>
+                      <td>{{ item.status }}</td>
+                      <td>
+                          <div style="width: 10px;"></div>
+                          <form action="{{ url_for('hapus_aset', dataset=item._id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data aset ini?')" title="Delete">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                          </form>
+                                                 
+                        </div>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-primary" onclick="showFormAset()">Add Aset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const editButtons = document.querySelectorAll('.edit-aset');
+
+    editButtons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        const asetId = button.getAttribute('data-aset-id');
+
+        window.location.href = '/edit_aset/' + asetId;
+      });
+    });
+
+    function showFormAset() {
+      var formAset = document.getElementById('form-aset');
+      formAset.style.display = 'block';
+    }
+
+    function batal() {
+      window.location.href = "/listaset";
+    }
+  </script>
+
+  {% include 'footer_admin.html' %}
+</body>
+</html>

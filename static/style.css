@@ -1,0 +1,69 @@
+/* style.css */
+
+body {
+  padding-top: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+* {
+    font-family: 'Gloock', serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'PT Serif', serif;
+}
+
+body {
+  background-image: url("https://www.hostinger.co.id/tutorial/wp-content/uploads/sites/11/2019/05/template-portofolio-wordpres-1280x720.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.auth {
+  padding: 10px;
+  margin-top: 3.5rem;
+}
+
+.auth .card {
+  box-shadow: -8px 12px 18px 0 rgb(25, 42, 70, 0.13);
+  margin-bottom: 2.2rem;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.auth h2 {
+  text-align: center;
+  font-weight: 600;
+  color: #3882f6;
+}
+.btn-group {
+  margin-right: 5px;
+}
+
+.banner-content {
+  text-align: center;
+  color: white;
+}
+
+h1.display-6 {
+  color: white;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .container h2 {
+        font-size: 30px;
+        color: #227783;
+        margin-bottom: 30px;
+      }
+
+      .container p {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .container ul {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+        padding-left: 20px;
+      }
+
+      .card {
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'header_warga.html'%}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark"><b>About Website Peminjaman Aset</b></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card">
+          <b><h2><b>Sejarah</b></h2>
+          <p>
+            Dusun Rahmat merupakan sebuah dusun yang terletak di Kampung Pulo Sarok, Kecamatan Singkil, Kabupaten Aceh Singkil. Dusun ini memiliki berbagai macam aset yang digunakan oleh warga dusun untuk kegiatan sehari-hari. Peminjaman
+            aset antar warga dusun sering kali terjadi, namun saat ini belum ada sistem yang efektif untuk mencatat dan mengatur peminjaman tersebut. Akibatnya, sering terjadi kesulitan dalam melacak aset yang dipinjam, mengembalikan tepat
+            waktu, dan menghindari kerusakan atau kehilangan aset.
+          </p>
+          <p>
+            Untuk mengatasi permasalahan ini, dibutuhkan sebuah sistem pencatatan peminjaman aset yang efisien dan mudah digunakan oleh warga dusun. Dalam hal ini, penggunaan teknologi website menjadi solusi yang tepat, karena dapat
+            memberikan kemudahan akses dan penanganan data yang lebih baik.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2><b>Visi dan Misi</b></h2>
+          <h4><b>Visi</b></h4>
+          <p>"Membangun website pencatatan peminjaman aset yang efisien dan terpercaya di Dusun Rahmat, Kampung Pulo Sarok, Aceh Singkil menggunakan Python dan MongoDB."</p>
+          <br />
+          <h4><b>Misi</b></h4>
+          <ul>
+            <li>Menyediakan sistem online untuk peminjaman aset yang cepat dan mudah.</li>
+            <li>Mengelola data aset dan status peminjaman dengan baik.</li>
+            <li>Memastikan keamanan data pengguna.</li>
+          </ul></b>
+        </div>
+      </div>
+    </div>
+
+    {% include 'footer_warga.html' %}
+  </body>
+</html>

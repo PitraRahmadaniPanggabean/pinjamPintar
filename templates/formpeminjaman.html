@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peminjaman</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 50px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      input[type='text'],
+      input[type='date'],
+      textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      input[type='submit'] {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      input[type='submit']:hover {
+        background-color: #45a049;
+      }
+
+      .text-center {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .text-center a {
+        color: #4caf50;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include 'header_warga.html' %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark"><b>Form Peminjaman</b></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container">
+          <div class="justify-content">
+            <div class="col-md-15">
+              {% if session.pesan %}
+              <div class="alert alert-success">{{ session.pesan }}</div>
+              {% endif %}
+              <form method="POST" action="/formpeminjaman">
+                <div class="form-group">
+                  <label for="nama">Nama Lengkap</label>
+                  <input type="text" id="nama" name="nama" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="aset">Nama Aset</label>
+                  <input type="text" id="aset" name="aset" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="jumlah">Jumlah Aset</label>
+                  <input type="text" id="jumlah" name="jumlah" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="tglPeminjaman">Tanggal Peminjaman</label>
+                  <input type="date" id="tglPeminjaman" name="tglPeminjaman" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="tglPengembalian">Tanggal Pengembalian</label>
+                  <input type="date" id="tglPengembalian" name="tglPengembalian" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="deskripsi">Deskripsi Peminjaman</label>
+                  <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4" required></textarea>
+                </div>
+
+                <input type="submit" value="Submit" class="btn btn-primary" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    {% include 'footer_warga.html' %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

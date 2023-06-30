@@ -1,0 +1,250 @@
+{% include 'header_admin.html' %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Validasi</h1>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Data Validasi</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="dataTable" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Foto</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Nomor KTP</th>
+                    <th>Nomor Telepon</th>
+                    <th>Alamat</th>
+                    <th>Status Akun</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for validation in validations %} {% if validation.role !=
+                  'admin' %}
+                  <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>
+                      <img
+                        src="../{{ validation.foto_path }}"
+                        alt="Foto Pengguna"
+                        width="50"
+                      />
+                    </td>
+                    <td>{{ validation.nama }}</td>
+                    <td>{{ validation.email }}</td>
+                    <td>{{ validation.ktp }}</td>
+                    <td>{{ validation.no_telp }}</td>
+                    <td>{{ validation.alamat }}</td>
+                    <td>
+                      {% if validation.status == 'Aktif' %}
+                      <span class="badge badge-success">Nonaktif</span>
+                      {% else %}
+                      <span class="badge badge-danger">Aktif</span>
+                      {% endif %}
+                    </td>
+                    <td>
+                      <div class="btn-group" role="group" aria-label="Actions">
+                        <a
+                          href="/validasi/{{ validation._id }}/edit"
+                          class="btn btn-primary"
+                          title="Edit"
+                        >
+                          <i class="fas fa-edit"></i>
+                        </a>
+                        <!-- ... -->
+                        <div style="width: 10px"></div>
+                        <!-- Menambahkan jarak horizontal antara ikon Edit dan ikon Delete -->
+                        <form
+                          action="/validasi/{{ validation._id }}/delete"
+                          method="POST"
+                          onsubmit="return confirm('Apakah Anda yakin ingin menghapus data validasi ini?')"
+                          title="Delete"
+                        >
+                          <input type="hidden" name="_method" value="DELETE" />
+                          <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endif %} {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Modal Edit Validation -->
+<div
+  class="modal fade"
+  id="editValidationModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editValidationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editValidationModalLabel">
+          Edit Validation
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form
+        id="editValidationForm"
+        action=""
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="modal-body">
+          <!-- Form fields for editing validation data -->
+          <div class="form-group">
+            <label for="nama">Nama</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nama"
+              name="nama"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="ktp">Nomor KTP</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ktp"
+              name="ktp"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="no_telp">Nomor Telepon</label>
+            <input
+              type="text"
+              class="form-control"
+              id="no_telp"
+              name="no_telp"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <textarea
+              class="form-control"
+              id="alamat"
+              name="alamat"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="foto">Foto</label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="foto"
+              name="foto"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Batal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    // Mendapatkan ID validasi saat tombol Edit diklik
+    $("#editValidationModal").on("show.bs.modal", function (event) {
+      var button = $(event.relatedTarget);
+      var validationId = button.data("validation-id");
+      var modal = $(this);
+
+      // Mengatur URL aksi form dengan ID validasi yang akan diedit
+      modal
+        .find("#editValidationForm")
+        .attr("action", "/validasi/" + validationId + "/edit");
+
+      // Mengambil data validasi menggunakan AJAX
+      $.ajax({
+        url: "/validasi/" + validationId,
+        type: "GET",
+        success: function (response) {
+          var validation = response.validation;
+
+          // Mengisi nilai-nilai form dengan data validasi yang diambil
+          modal.find("#nama").val(validation.nama);
+          modal.find("#email").val(validation.email);
+          modal.find("#ktp").val(validation.ktp);
+          modal.find("#no_telp").val(validation.no_telp);
+          modal.find("#alamat").val(validation.alamat);
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    });
+  });
+</script>
+
+{% include 'footer_admin.html' %}

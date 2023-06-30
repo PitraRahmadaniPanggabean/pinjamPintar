@@ -1,0 +1,78 @@
+{% include 'header_warga.html'%}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Profile</h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="text-center">
+                <img src="{{ user_info.foto_path }}" class="w-50 img-fluid" alt="User Image">
+                <h3 class="profile-username">{{ user_info.nama }}</h3>
+                <p class="text-muted">{{ user_info.alamat }}</p>
+                <button type="button" class="btn btn-primary w-50" data-toggle="modal" data-target="#staticBackdrop">
+                    Edit Profile
+                  </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <form action="/editaccount" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputnama"><b>Nama Lengkap</b></label>
+                                <input type="text" class="form-control" id="inputnama" placeholder="Enter Name" name="nama" value="{{ user_info.nama }}" />
+                            </div>
+                            
+                            <div class="form-group col-md-12">
+                                <label for="inputAddress"><b>Alamat</b></label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Enter Address" name="alamat" value="{{ user_info.alamat }}" />
+                            </div>
+                            
+                            <div class="form-group col-md-12">
+                                <label for="uploadfoto"><b>Upload Profile Picture</b></label>
+                                <input type="file" class="form-control-file" id="uploadfoto" name="file" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+{% include 'footer_warga.html' %}

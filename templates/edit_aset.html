@@ -1,0 +1,66 @@
+<!-- edit_aset.html -->
+{% include 'header_admin.html' %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Edit Aset</h1>
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <form action="{{ url_for('update_aset', aset_id=aset._id) }}" method="POST">
+                <div class="form-group">
+                  <label for="nama">Nama Aset</label>
+                  <input type="text" class="form-control" id="nama" name="nama" value="{{ aset.nama }}" required>
+                </div>
+                <div class="form-group">
+                  <label for="kategori">Kategori</label>
+                  <select class="form-control" id="kategori" name="kategori" required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="Kategori 1" {% if aset.kategori == 'Kategori 1' %} selected {% endif %}>Furniture</option>
+                    <option value="Kategori 2" {% if aset.kategori == 'Kategori 2' %} selected {% endif %}>Elektronik</option>
+                    <!-- Tambahkan opsi kategori lainnya sesuai kebutuhan -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="jumlah">Jumlah</label>
+                  <input type="number" class="form-control" id="jumlah" name="jumlah" value="{{ aset.jumlah }}" required>
+                </div>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <input type="text" class="form-control" id="status" name="status" value="{{ aset.status }}" required>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-primary" type="submit">Simpan</button>
+                  <a href="/listaset" class="btn btn-secondary">Batal</a>
+                </div>  
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% include 'footer_admin.html' %}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .content {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .content h1 {
+        font-size: 28px;
+        color: #227783;
+        margin-bottom: 20px;
+      }
+
+      .content p {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .content .highlight {
+        font-weight: bold;
+        color: #227783;
+      }
+
+      .content-inner {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      
+      .icon {
+        font-size: 48px;
+        color: #227783;
+        margin-bottom: 10px;
+      }
+
+      .icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'header_warga.html'%}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="content-inner">
+          <h1>Selamat datang di Website Peminjaman Aset</h1>
+          <p class="highlight">Dusun Rahmat, Kampung Pulo Sarok, Kecamatan Singkil, Kabupaten Aceh Singkil</p>
+          <hr />
+          <br />
+          <br />
+          <div class="icon-container">
+            <i class="fas fa-users icon"></i>
+            <i class="fas fa-laptop icon"></i>
+            <i class="fas fa-tools icon"></i>
+          </div>
+          <p>
+            Melalui platform ini, kami berdedikasi untuk memberikan layanan terbaik kepada masyarakat dalam peminjaman aset. Bersama-sama, mari kita menjaga dan memanfaatkan aset dengan bijak, meningkatkan produktivitas, dan mewujudkan
+            kemajuan dalam lingkungan kita.
+          </p>
+          <p>Terima kasih telah memilih kami sebagai mitra peminjaman aset Anda. Nikmati pengalaman istimewa ini, dan jangan ragu untuk menghubungi kami jika ada pertanyaan atau bantuan yang Anda butuhkan.</p>
+          <br />
+          <p>Selamat menggunakan website peminjaman aset kami!</p>
+          <br /><br />
+          <p>Salam hangat,</p>
+          <p class="highlight">Tim Website Peminjaman Aset</p>
+          <br /><br />
+        </div>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    {% include 'footer_warga.html' %}
+  </body>
+</html>

@@ -1,0 +1,110 @@
+{% include 'header_warga.html' %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark"><b>Data Aset</b></h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <style>
+    /* CSS untuk membuat tabel rapi dan bagus */
+    #asetTable {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    #asetTable th,
+    #asetTable td {
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid #ddd;
+    }
+  
+    #asetTable th {
+      background-color: #f5f5f5;
+    }
+  
+    #asetTable img {
+      max-width: 300px;
+      max-height: 100px;
+    }
+  
+    .btn-pinjam {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Daftar Aset</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="asetTable" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Aset</th>
+                    <th>Gambar Aset</th>
+                    <th>Kategori</th>
+                    <th>Jumlah</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in asets %}
+                  <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ item.nama }}</td>
+                    <td>
+                      <div class="image-container">
+                        <img src="{{ url_for('static', filename='gambar/' + item.gambar) }}" alt="Gambar Aset" width="400" height="150">
+                      </div>
+                    </td>
+                    <td>{{ item.kategori }}</td>
+                    <td>{{ item.jumlah }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>
+                      <a href="{{ url_for('formpeminjaman', aset_id=item._id) }}" class="btn btn-primary" title="Pinjam Sekarang">
+                        <i class="fas fa-arrow-right"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% include 'footer_warga.html' %}

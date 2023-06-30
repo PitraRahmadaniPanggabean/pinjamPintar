@@ -1,0 +1,104 @@
+{% include 'header_admin.html' %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Dashboard</h1>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Informasi Umum -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="info-box">
+            <span class="info-box-icon bg-primary"><i class="fas fa-users"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Jumlah Pengguna</span>
+              <span class="info-box-number">500</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="info-box">
+            <span class="info-box-icon bg-success"><i class="fas fa-tasks"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Tugas Terselesaikan</span>
+              <span class="info-box-number">80%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grafik atau Tabel Statistik -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Grafik Peminjaman</h3>
+            </div>
+            <div class="card-body">
+              <!-- Tambahkan grafik di sini -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Tabel Pengguna Terbaru</h3>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Isi tabel dengan data pengguna terbaru -->
+                  <tr>
+                    <td>Pitra Rahmadani P</td>
+                    <td>singkilfitri@gmail.com</td>
+                    <td>Admin</td>
+                  </tr>
+                  <tr>
+                    <td>Hani</td>
+                    <td>jane.smith@example.com</td>
+                    <td>Admin</td>
+                  </tr>
+                  <tr>
+                    <td>iqlimah</td>
+                    <td>jane.smith@example.com</td>
+                    <td>Admin</td>
+                  </tr>
+                  <tr>
+                    <td>Huseini</td>
+                    <td>jane.smith@example.com</td>
+                    <td>Admin</td>
+                  </tr>
+                  <!-- ... -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+{% include 'footer_admin.html' %}

@@ -1,0 +1,142 @@
+{% include 'header_warga.html' %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark"><b>Data Aset</b></h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <style>
+    /* CSS untuk membuat tabel rapi dan bagus */
+    #asetTable {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    #asetTable th,
+    #asetTable td {
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid #ddd;
+    }
+  
+    #asetTable th {
+      background-color: #f5f5f5;
+    }
+  
+    #asetTable img {
+      max-width: 300px;
+      max-height: 100px;
+    }
+  
+    .btn-kembalikan {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Daftar Aset</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="asetTable" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Nama Lengkap</th>
+                    <th>Nama Aset</th>
+                    <th>Jumlah Aset</th>
+                    <th>Tanggal Peminjaman</th>
+                    <th>Tanggal Pengembalian</th>
+                    <th>Deskripsi Peminjaman</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ peminjaman.nama }}</td>
+                    <td>{{ peminjaman.aset }}</td>
+                    <td>{{ peminjaman.jumlah }}</td>
+                    <td>{{ peminjaman.tgl_peminjaman }}</td>
+                    <td>{{ peminjaman.tgl_pengembalian }}</td>
+                    <td>{{ peminjaman.deskripsi }}</td>
+                    <td>
+                      <button id="btnKembalikan" class="btn-kembalikan" data-id="{{ peminjaman._id }}"><i class="fas fa-arrow-left"></i> Kembalikan Barang</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- ... -->
+<script>
+  function kembalikanBarang(event) {
+    var id = event.target.getAttribute('data-id');
+    
+    fetch('/kembalikan_barang', {
+      method: 'POST',
+      body: JSON.stringify({ id: id }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Barang berhasil dikembalikan.');
+        // Update button text and disable it
+        event.target.innerText = 'Sudah Dikembalikan';
+        event.target.disabled = true;
+      } else {
+        alert('Terjadi kesalahan dalam mengembalikan barang.');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Terjadi kesalahan dalam mengembalikan barang.');
+    });
+  }
+
+  // Add this code after the function definition of kembalikanBarang()
+document.addEventListener('DOMContentLoaded', function() {
+  var btnKembalikan = document.getElementById('btnKembalikan');
+  btnKembalikan.addEventListener('click', kembalikanBarang);
+});
+
+  
+</script> 
+<!-- ... -->
+
+
+
+{% include 'footer_warga.html' %}
